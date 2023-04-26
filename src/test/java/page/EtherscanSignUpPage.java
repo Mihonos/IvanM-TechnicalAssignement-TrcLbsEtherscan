@@ -61,7 +61,6 @@ public class EtherscanSignUpPage extends BaseTest {
         actions.moveToElement(firstCheckBox).build().perform();
         firstCheckBox.click();
     }
-
     public void checkCaptcha() throws InterruptedException {
         wdWait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(captchaIframe));
         wdWait.until(ExpectedConditions.elementToBeClickable(captchaCheckBox));
@@ -70,7 +69,6 @@ public class EtherscanSignUpPage extends BaseTest {
         Thread.sleep(5000);
         captchaCheckBox.click();
         driver.switchTo().defaultContent();
-
     }
     public void setZoom90(){
         ((JavascriptExecutor)driver).executeScript("document.body.style.zoom='90%';");
@@ -84,9 +82,7 @@ public class EtherscanSignUpPage extends BaseTest {
         //((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", createAccountBtn);
         //actions.moveToElement(createAccountBtn, (int) 317.220, (int) 22.500).build().perform();
         createAccountBtn.click();
-
     }
-
     public boolean successfullSignUp(){
         wdWait.until(ExpectedConditions.visibilityOf(successfullSignUpMsg));
         return successfullSignUpMsg.isDisplayed();
