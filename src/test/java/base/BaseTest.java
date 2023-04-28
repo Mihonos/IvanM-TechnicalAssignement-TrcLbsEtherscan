@@ -26,24 +26,6 @@ public class BaseTest {
         driver.manage().window().maximize();
         actions = new Actions(driver);
     }
-    //int waitTime = 30;
-
-    /*public void clickElement(WebElement element) {
-        try {
-            WebDriverWait wdWait = new WebDriverWait(driver, waitTime);
-            wdWait.until(ExpectedConditions.visibilityOf(element));
-            wdWait.until(ExpectedConditions.elementToBeClickable(element));
-
-            Actions actions = new Actions(driver);
-            actions.moveToElement(element).click().build().perform();
-            //System.out.println("Clicked " + log);
-        } catch (StaleElementReferenceException e) {
-            Actions actions = new Actions(driver);
-            actions.moveToElement(element).click().build().perform();
-            //System.out.println("Clicked " + log);
-        }
-    }*/
-
 
     @After
     public void tearDown() {

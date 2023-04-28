@@ -3,6 +3,7 @@ package page;
 
 import base.BaseTest;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -35,8 +36,12 @@ public class EtherscanWarningMsgsPage extends BaseTest {
     WebElement reEnterPassMsg;
     @FindBy(id = "ctl00$ContentPlaceHolder1$MyCheckBox-error")
     WebElement acceptTAndCMsg;
-    @FindBy(css = ".alert-danger")
+    @FindBy(xpath = "//div[@class='alert alert-danger'][contains(.,'captcha response')]")
     WebElement invalidCaptchaMsg;
+    @FindBy(css = ".fa-question-circle ")
+    WebElement questionCircleBtn;
+    @FindBy(xpath = "//i[@aria-label='Username has to be from 5 to 30 characters in length, only alphanumeric characters allowed.']" )
+    WebElement infoMsg;
 
     // Username field Warning messages: next 3 methods
     public boolean showEnterUsernameWarningMsg(){
@@ -59,6 +64,7 @@ public class EtherscanWarningMsgsPage extends BaseTest {
     public boolean showEnterValidEmailWarningMsg(){
         return incorrectMailMsg.isDisplayed();
     }
+
     // Confirm Email Address field Warning messages: next 2 methods
     public boolean showReEnterEmailWarningMsg(){
         return reEnterEmailMsg.isDisplayed();
@@ -71,6 +77,7 @@ public class EtherscanWarningMsgsPage extends BaseTest {
     public boolean showEnterPasswordWarningMsg(){
         return enterPassMsg.isDisplayed();
     }
+
     // Confirm Password field Warning messages: next 2 methods
     public boolean showPassMustBe8ChLongWarningMsg(){
         return reEnterPassMsg.isDisplayed();
@@ -83,6 +90,13 @@ public class EtherscanWarningMsgsPage extends BaseTest {
     public boolean showAcceptTandCWarningMsg(){
         return acceptTAndCMsg.isDisplayed();
     }
+    public boolean showInvalidCaptchaWarningMsg(){
+        return invalidCaptchaMsg.isDisplayed();
+    }
+    public boolean showHiddenInfoMsg(){
+        actions.moveToElement(questionCircleBtn).build().perform();
+        wdWait.until(ExpectedConditions.visibilityOf(infoMsg));
+        return infoMsg.isDisplayed();
 
-
+    }
 }
