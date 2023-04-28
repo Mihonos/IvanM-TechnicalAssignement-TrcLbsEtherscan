@@ -35,6 +35,8 @@ public class EtherscanSignUpPage extends BaseTest {
     WebElement createAccountBtn;
     @FindBy(css = ".alert-info")
     WebElement successfullSignUpMsg;
+    @FindBy(xpath = "//div[@class='alert alert-danger'][contains(.,'username you entered is already in use')]")
+    WebElement usedUsernameWarningMsg;
 
     public void enterUserName(){
         usernameField.sendKeys("tet"+System.currentTimeMillis()/100+"hersome");
@@ -87,5 +89,17 @@ public class EtherscanSignUpPage extends BaseTest {
         wdWait.until(ExpectedConditions.visibilityOf(successfullSignUpMsg));
         return successfullSignUpMsg.isDisplayed();
     }
-
+    public void enterUsedUsername(){
+        usernameField.sendKeys("tet16826853336hersome");
+    }
+    public boolean usedUsernameWarningMsg(){
+        wdWait.until(ExpectedConditions.visibilityOf(usedUsernameWarningMsg));
+        return usedUsernameWarningMsg.isDisplayed();
+    }
+    public void enterUsedEmail(){
+        emailField.sendKeys("test16826853342@mailinator.com");
+    }
+    public void reEnterUsedEmail(){
+        confirmEmailField.sendKeys("test16826853342@mailinator.com");
+    }
 }

@@ -1,4 +1,4 @@
-package test;
+package test.EtherscanWarningMsgsTestSuite;
 
 import base.BaseTest;
 import org.junit.Assert;
